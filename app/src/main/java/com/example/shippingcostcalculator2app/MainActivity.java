@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         // -- Display inforamtion --
+        /*
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
 
         int width = displayMetrics.widthPixels;
@@ -29,6 +32,21 @@ public class MainActivity extends AppCompatActivity {
             Fragment1 fragment1= new Fragment1();
             fragmentTransaction.replace(R.id.frame,fragment1);
         }
+        fragmentTransaction.commit();
+         */
+
+        WindowManager wm = getWindowManager();
+        Display display = wm.getDefaultDisplay();
+        if(display.getWidth() > display.getHeight()){
+            Fragment2 fragment2 = new Fragment2();
+            fragmentTransaction.replace(R.id.frame, fragment2);
+
+        }else {
+
+            Fragment1 fragment1 = new Fragment1();
+            fragmentTransaction.replace(R.id.frame,fragment1);
+        }
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
         setContentView(R.layout.activity_main);

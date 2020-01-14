@@ -24,7 +24,7 @@ public class Fragment2 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment1, container,false);
+        final View view = inflater.inflate(R.layout.fragment2, container,false);
 
         shipItem = new ShipItem();
         weightET = view.findViewById(R.id.editText1);
